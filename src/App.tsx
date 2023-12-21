@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div className="App">
-      <p>learn react</p>
       {isFetching && "...loading"}
       {errorMessage && errorMessage}
       {data && data?.name}

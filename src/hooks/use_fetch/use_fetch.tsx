@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { isError } from "../../helpers/is_error";
 
-function useFetch<T>(url: string) {
-  const [data, setData] = useState<T>();
+function useFetch<TData>(url: string) {
+  const [data, setData] = useState<TData>();
   const [isFetching, setIsFetching] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string>();
 
@@ -21,7 +21,7 @@ function useFetch<T>(url: string) {
               `${response.status} Oops... something went wrong, try again 🤕`
             );
           } else {
-            setErrorMessage(`${response.status} Not Found`);
+            setErrorMessage(`${response.status} ${response.statusText}`);
           }
         }
         if (response.status === 200) {
